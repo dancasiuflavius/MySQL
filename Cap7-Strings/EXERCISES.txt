@@ -1,0 +1,30 @@
+SELECT REVERSE(UCASE('Why does my cat look at me such hatred?'));
+
+I-LIKE-CATS
+
+SELECT REPLACE(title,' ', '->') AS title from books;
+
+
+
+SELECT 
+    author_lname AS forwards, REVERSE(author_lname) AS backwards
+FROM
+    books;
+
+
+
+SELECT 
+    UPPER(CONCAT(author_fname, ' ', author_lname)) AS CAPS
+FROM
+    books;
+
+
+SELECT CONCAT(title, ' was released in ', released_year) as blurb from books;
+
+SELECT title as titles, char_length(title) as 'CHAR LENGTH' from books;
+
+SELECT 
+    CONCAT(SUBSTR(title, 1, 10), '...') AS 'SHORT TITLE',
+    CONCAT(author_lname, ',', author_fname) AS author,
+    CONCAT(stock_quantity, 'in stock') AS 'Quantity'
+FROM

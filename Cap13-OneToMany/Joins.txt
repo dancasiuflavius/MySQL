@@ -1,0 +1,42 @@
+SELECT id FROM customers WHERE last_name = 'George';
+SELECT * FROM orders WHERE customer_id = 1;
+
+SELECT * FROM orders
+WHERE
+    customer_id = (SELECT id
+        FROM
+            customers
+        WHERE
+            last_name = 'George');
+            
+SELECT * FROM customers, orders;
+
+
+~~~~~INNER JOIN~~~~~~~~
+SELECT first_name, last_name, order_date, amount FROM customers
+JOIN orders
+	ON customers.id = orders.customer_id;
+    
+SELECT * FROM orders
+JOIN customers ON customers.id = orders.customer_id;
+~~~~INNER JOIN WITH GROUP BY~~~~~~~~~
+SELECT first_name,last_name, SUM(amount) as TOTAL FROM customers 
+JOIN orders
+	ON orders.customer_id =customers.id
+    GROUP BY first_name, last_name
+    ORDER BY total DESC;
+~~~~LEFT JOIN~~~~~~
+SELECT 
+    first_name, last_name, order_date, amount
+FROM
+    customers
+        LEFT JOIN
+    orders ON orders.customer_id = customers.id;
+ 
+ 
+SELECT 
+    order_date, amount, first_name, last_name
+FROM
+    orders
+        LEFT JOIN
+    customers ON orders.customer_id = customers.id;
